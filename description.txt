@@ -1,0 +1,15 @@
+Radiant Arsenal is a mod that plans to add new and unique subclasses along with a new resource that they share: radiance, to perform special attacks with those weapons. With this resource, it also adds new functions to some vanilla weapons that seemed forgotten and unused
+
+This mod is currently under development. Expect to see more content in the future
+
+Mod author is KoolaidLemonade. Koolaidlemonade#6442 on discord.
+
+v0.1 (Initial Release)
+- Spellblade mage subclass
+- Several new functions for vanilla weapons
+- Radiance system
+
+
+
+
+
