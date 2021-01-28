@@ -30,7 +30,7 @@ namespace RadiantArsenal.Items.Spellblades
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 2f;
             item.value = 10000;
-            item.rare = ItemRarityID.Red;
+            item.rare = ItemRarityID.LightRed;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("WanderReaverProj");
             item.UseSound = SoundID.Item1;

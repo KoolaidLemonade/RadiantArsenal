@@ -9,6 +9,7 @@ v0.3.2
 - Radiance depletion now functions properly when the player has no ammo or mana for their weapon
 - Balance changes
 - Spears are now able to be picked up in multiplayer
+- Rarity fixes
 
 v0.3.1
 - Multiplayer hotfix
