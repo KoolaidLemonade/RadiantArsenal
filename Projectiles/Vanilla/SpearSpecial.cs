@@ -3,7 +3,6 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace RadiantArsenal.Projectiles.Vanilla
 {
@@ -26,9 +25,6 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
         public override void AI()
         {
-            Texture2D texture = Main.projectileTexture[projectile.type];
-            drawOriginOffsetX = -texture.Width / 2 + texture.Width / 2 * 0.09f;
-
             Player player = Main.player[projectile.owner];
 
             projectile.timeLeft = 2;
@@ -66,6 +62,11 @@ namespace RadiantArsenal.Projectiles.Vanilla
                     projectile.Kill();
                 }
             }
+
+            if (Main.dedServ) return;
+
+            Texture2D texture = Main.projectileTexture[projectile.type];
+            drawOriginOffsetX = -texture.Width / 2 + texture.Width / 2 * 0.09f;
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -230,7 +231,6 @@ namespace RadiantArsenal.Projectiles.Vanilla
             Item.NewItem(player.Center, ItemID.PalladiumPike, 1, true, 0, true, false);
         }
     }
-    //god fucking damnit "spear" bitchass who the fuck just names a weapon "spear" boring ass
     internal class SpearSpecialProjectile : SpearSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.Spear;

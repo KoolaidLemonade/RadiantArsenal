@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using RadiantArsenal.Items;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,7 +36,6 @@ namespace RadiantArsenal.Items
             {
                 if (modPlayer.radianceCurrent >= radianceCost)
                 {
-                    modPlayer.radianceCurrent -= radianceCost;
                     return true;
                 }
                 return false;
@@ -43,6 +43,15 @@ namespace RadiantArsenal.Items
             else
             {
                 return base.CanUseItem(player);
+            }
+        }
+        public override void HoldItem(Player player)
+        {
+            var modPlayer = player.GetModPlayer<RadiancePlayer>();
+
+            if (player.altFunctionUse == 2 && player.itemAnimation == player.itemAnimationMax - 1)
+            {
+                modPlayer.radianceCurrent -= radianceCost;
             }
         }
     }
@@ -99,6 +108,9 @@ public class RadianceGlobalItem : GlobalItem
 
             case ItemID.NightsEdge:
             case ItemID.TrueNightsEdge:
+            case ItemID.Excalibur:
+            case ItemID.TrueExcalibur:
+            case ItemID.TerraBlade:
                 radianceCost = 100;
                 break;
 
@@ -148,6 +160,9 @@ public class RadianceGlobalItem : GlobalItem
 
             case ItemID.NightsEdge:
             case ItemID.TrueNightsEdge:
+            case ItemID.Excalibur:
+            case ItemID.TrueExcalibur:
+            case ItemID.TerraBlade:
                 return true;
             default:
                 return base.AltFunctionUse(item, player);
@@ -164,6 +179,9 @@ public class RadianceGlobalItem : GlobalItem
             {
                 case ItemID.NightsEdge:
                 case ItemID.TrueNightsEdge:
+                case ItemID.Excalibur:
+                case ItemID.TrueExcalibur:
+                case ItemID.TerraBlade:
                     return false;
                 case ItemID.Spear:
                     Projectile.NewProjectile(player.Center, speed * 3, mod.ProjectileType("SpearSpecialProjectile"), damage * 4, knockBack * 2, player.whoAmI);
@@ -269,10 +287,10 @@ public class RadianceGlobalItem : GlobalItem
                     Projectile.NewProjectile(player.Center, speed, mod.ProjectileType("IceBowSpecial"), damage * 2, knockBack * 2, player.whoAmI);
                     return false;
                 case ItemID.PulseBow:
-                    for (int i = 0; i <= Main.rand.Next(4, 6); i++)
+                    for (int i = 0; i <= Main.rand.Next(2, 4); i++)
                     {
                         Vector2 perturbedSpeed3 = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
-                        Projectile.NewProjectile(player.Center, perturbedSpeed3, ProjectileID.PulseBolt, damage, knockBack * 2, player.whoAmI);
+                        Projectile.NewProjectile(player.Center, perturbedSpeed3, ProjectileID.PulseBolt, (int)(damage * 1.5f), knockBack * 2, player.whoAmI);
                     }
                     return false;
 
@@ -343,6 +361,13 @@ public class RadianceGlobalItem : GlobalItem
             case ItemID.TrueNightsEdge:
                 tooltips.Add(new TooltipLine(mod, "Radiance Description", "Right Click to change the time to night"));
                 break;
+            case ItemID.Excalibur:
+            case ItemID.TrueExcalibur:
+                tooltips.Add(new TooltipLine(mod, "Radiance Description", "Right Click to change the time to day"));
+                break;
+            case ItemID.TerraBlade:
+                tooltips.Add(new TooltipLine(mod, "Radiance Description", "Right Click to change the time from day to night or night to day"));
+                break;
             case ItemID.LeafBlower:
                 tooltips.Add(new TooltipLine(mod, "Radiance Description", "Right Click to release a gust of wind that blows enemies away"));
                 break;
@@ -369,11 +394,34 @@ public class RadianceGlobalItem : GlobalItem
                 case ItemID.TrueNightsEdge:
                     if (Main.dayTime)
                     {
-                        Main.time = 54000;
+                        Main.dayTime = false;
                     }
                     else
                     {
                         return false;
+                    }
+                    item.useStyle = ItemUseStyleID.HoldingUp;
+                    break;
+                case ItemID.Excalibur:
+                case ItemID.TrueExcalibur:
+                    if (!Main.dayTime)
+                    {
+                        Main.dayTime = true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    item.useStyle = ItemUseStyleID.HoldingUp;
+                    break;
+                case ItemID.TerraBlade:
+                    if (!Main.dayTime)
+                    {
+                        Main.dayTime = true;
+                    }
+                    else
+                    {
+                        Main.dayTime = false;
                     }
                     item.useStyle = ItemUseStyleID.HoldingUp;
                     break;
@@ -383,13 +431,13 @@ public class RadianceGlobalItem : GlobalItem
                     break;
                 case ItemID.Revolver:
                 case ItemID.TheUndertaker:
-                    item.useTime = 5;
-                    item.useAnimation = 5;
+                    item.useTime = 3;
+                    item.useAnimation = 3;
                     break;
             }
+
             if (modPlayer.radianceCurrent >= radianceCost)
             {
-                modPlayer.radianceCurrent -= radianceCost;
                 return true;
             }
             return false;            
@@ -400,6 +448,9 @@ public class RadianceGlobalItem : GlobalItem
             {
                 case ItemID.NightsEdge:
                 case ItemID.TrueNightsEdge:
+                case ItemID.Excalibur:
+                case ItemID.TrueExcalibur:
+                case ItemID.TerraBlade:
                     item.useStyle = ItemUseStyleID.SwingThrow;
                     break;
                 case ItemID.LeafBlower:
@@ -417,6 +468,16 @@ public class RadianceGlobalItem : GlobalItem
             }
 
             return base.CanUseItem(item, player);
+        }
+    }
+
+    public override void HoldItem(Item item, Player player)
+    {
+        var modPlayer = player.GetModPlayer<RadiancePlayer>();
+
+        if (player.altFunctionUse == 2 && player.itemAnimation == player.itemAnimationMax - 1)
+        {
+            modPlayer.radianceCurrent -= radianceCost;
         }
     }
 
