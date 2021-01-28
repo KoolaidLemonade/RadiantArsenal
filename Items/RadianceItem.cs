@@ -415,13 +415,16 @@ public class RadianceGlobalItem : GlobalItem
                     item.useStyle = ItemUseStyleID.HoldingUp;
                     break;
                 case ItemID.TerraBlade:
-                    if (!Main.dayTime)
+                    if (Main.myPlayer == player.whoAmI && Main.mouseRightRelease)
                     {
-                        Main.dayTime = true;
-                    }
-                    else
-                    {
-                        Main.dayTime = false;
+                        if (!Main.dayTime)
+                        {
+                            Main.dayTime = true;
+                        }
+                        else
+                        {
+                            Main.dayTime = false;
+                        }
                     }
                     item.useStyle = ItemUseStyleID.HoldingUp;
                     break;
