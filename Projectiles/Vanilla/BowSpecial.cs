@@ -24,7 +24,7 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
     }
 
-    internal class BorealWoodSpecial : BowSpecial
+    internal class BorealWoodBowSpecial : BowSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.FrostArrow;
 
@@ -57,7 +57,7 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
     }
 
-    internal class PalmWoodSpecial : BowSpecial
+    internal class PalmWoodBowSpecial : BowSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.WoodenArrowFriendly;
 
@@ -90,7 +90,7 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
     }
 
-    internal class RichMahoganySpecial : BowSpecial
+    internal class RichMahoganyBowSpecial : BowSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.ChlorophyteArrow;
 
@@ -123,7 +123,7 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
     }
 
-    internal class EbonwoodSpecial : BowSpecial
+    internal class EbonwoodBowSpecial : BowSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.CursedArrow;
 
@@ -156,7 +156,7 @@ namespace RadiantArsenal.Projectiles.Vanilla
         }
     }
 
-    internal class ShadewoodSpecial : BowSpecial
+    internal class ShadewoodBowSpecial : BowSpecial
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.IchorArrow;
 

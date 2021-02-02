@@ -96,5 +96,13 @@ namespace RadiantArsenal.Items
 
             radianceCurrent = Utils.Clamp(radianceCurrent, 0, radianceMax2);
         }
+
+        public void ConsumeRadiance(int ConsumptionAmount)
+        {
+            if (radianceCurrent - ConsumptionAmount >= 0)
+            {
+                radianceCurrent -= ConsumptionAmount;
+            }
+        }
     }
 }
