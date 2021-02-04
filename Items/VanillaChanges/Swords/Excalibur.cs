@@ -8,11 +8,6 @@ namespace RadiantArsenal.Items.VanillaChanges.Swords
 {
     public class Excalibur : VanillaItemChange
     {
-        public override void SetDefaults(Item item)
-        {
-            item.GetGlobalItem<RadianceGlobalItem>().radianceCost = 100;
-        }
-
         public override bool AltFunctionUse(Item item, Player player)
         {
             return true;
@@ -37,20 +32,14 @@ namespace RadiantArsenal.Items.VanillaChanges.Swords
         {
             if (player.altFunctionUse == 2)
             {
-                if (Main.myPlayer == player.whoAmI && Main.mouseRightRelease)
+                if (Main.myPlayer == player.whoAmI && Main.mouseRightRelease && !Main.dayTime)
                 {
                     Main.dayTime = true;
                     player.GetModPlayer<RadiancePlayer>().ConsumeRadiance(item.GetGlobalItem<RadianceGlobalItem>().radianceCost);
+                    return true;
                 }
-
-                item.useStyle = ItemUseStyleID.HoldingUp;
                 return false;
             }
-            else
-            {
-                item.useStyle = ItemUseStyleID.SwingThrow;
-            }
-
             return base.CanUseItem(item, player);
         }
     }
