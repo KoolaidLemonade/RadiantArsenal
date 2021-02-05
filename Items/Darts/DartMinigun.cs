@@ -124,7 +124,7 @@ namespace RadiantArsenal.Items.Darts
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(0, 8);
+            return new Vector2(-10, 0);
         }
     }
 
