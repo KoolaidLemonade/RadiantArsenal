@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 
 namespace RadiantArsenal.Items.Darts
 {
-    public class WayweaversDartRifle : ModItem
+    public class WayweaversDartRifle : RadianceItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wayweaver's Dart Rifle");
             Tooltip.SetDefault("'Dominion over Galaxies'");
         }
-        public override void SetDefaults()
+        public override void SafeSetDefaults()
         {
             item.damage = 32;
             item.crit = 1;

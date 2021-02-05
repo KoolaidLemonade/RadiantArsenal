@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace RadiantArsenal.Items.Darts
 {
-    public class HellstoneBlowpipe : RadianceItem
+    public class HellstoneBlowpipe : BlownDartWeapon
     {
         public override void SetStaticDefaults()
         {
