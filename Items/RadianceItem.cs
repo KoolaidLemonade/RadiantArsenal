@@ -11,15 +11,19 @@ namespace RadiantArsenal.Items
     public abstract class RadianceItem : ModItem
     {
         public override bool CloneNewInstances => true;
+
         public int radianceCost = 0;
+
         public virtual void SafeSetDefaults()
         {
             
         }
+
         public sealed override void SetDefaults()
         {
             SafeSetDefaults();
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             if (radianceCost > 0)
@@ -45,6 +49,7 @@ namespace RadiantArsenal.Items
                 return base.CanUseItem(player);
             }
         }
+
         public override void HoldItem(Player player)
         {
             var modPlayer = player.GetModPlayer<RadiancePlayer>();

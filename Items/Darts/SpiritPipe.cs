@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace RadiantArsenal.Items.Darts
 {
-    public class SpiritPipe : RadianceItem
+    public class SpiritPipe : BlownDartWeapon
     {
         public override void SetStaticDefaults()
         {

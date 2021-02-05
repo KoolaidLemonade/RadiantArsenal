@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using RadiantArsenal.Items.Darts;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -98,6 +99,14 @@ namespace RadiantArsenal.Items
             if (radianceCurrent - ConsumptionAmount >= 0)
             {
                 radianceCurrent -= ConsumptionAmount;
+            }
+        }
+
+        public override void PostUpdate()
+        {
+            if (player.HeldItem.modItem is BlownDartWeapon && player.itemAnimation > 0)
+            {
+                player.bodyFrame.Y = player.bodyFrame.Height * 2; // Easiest solution, consider a new usestyle for a more elegant solution?
             }
         }
     }

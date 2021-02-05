@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,10 +31,9 @@ namespace RadiantArsenal.Items.Darts
             item.value = 54000;
             item.rare = ItemRarityID.Orange;
             item.autoReuse = true;
-            item.shoot = 10;
+            item.shoot = ProjectileID.Seed;
             item.useAmmo = AmmoID.Dart;
             item.UseSound = SoundID.Item11;
-
             radianceCost = 80;
         }
 
@@ -69,6 +69,7 @@ namespace RadiantArsenal.Items.Darts
             Projectile.NewProjectile(player.Center, new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)), type, damage, knockBack, player.whoAmI);
             return false;
         }
+
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)
@@ -120,9 +121,10 @@ namespace RadiantArsenal.Items.Darts
             }
             return true;
         }
+
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-10, 0);
+            return new Vector2(0, 8);
         }
     }
 
@@ -130,14 +132,7 @@ namespace RadiantArsenal.Items.Darts
     {
         public override void NPCLoot(NPC npc)
         {
-            if (npc.type == NPCID.AngryBones ||
-                npc.type == NPCID.AngryBonesBig ||
-                npc.type == NPCID.AngryBonesBigHelmet ||
-                npc.type == NPCID.AngryBonesBigMuscle ||
-                npc.type == NPCID.BlueArmoredBones ||
-                npc.type == NPCID.BlueArmoredBonesMace ||
-                npc.type == NPCID.BlueArmoredBonesNoPants ||
-                npc.type == NPCID.BlueArmoredBonesSword && Main.rand.NextFloat() < 0.01)
+            if (Main.rand.NextFloat() < 0.01 && NPCID.Search.TryGetName(npc.type, out string Name) && (Name.Contains("AngryBones") || Name.Contains("BlueArmoredBones")))
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("DartMinigun"));
             }
