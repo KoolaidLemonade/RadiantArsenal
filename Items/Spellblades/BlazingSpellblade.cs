@@ -28,7 +28,7 @@ namespace RadiantArsenal.Items.Spellblades
             item.useAnimation = 10;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 2f;
-            item.value = 10000;
+            item.value = 27000;
             item.rare = ItemRarityID.Orange;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("BlazingSpellbladeProj");

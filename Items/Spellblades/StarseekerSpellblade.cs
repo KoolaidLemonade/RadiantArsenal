@@ -30,7 +30,7 @@ namespace RadiantArsenal.Items.Spellblades
             item.useAnimation = 6;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 2f;
-            item.value = 10000;
+            item.value = 15000;
             item.rare = ItemRarityID.Blue;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("StarseekerSpellbladeProj");
@@ -38,24 +38,6 @@ namespace RadiantArsenal.Items.Spellblades
 
             radianceCost = 60;
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FallenStar, 5);
-            recipe.AddIngredient(ItemID.GoldBar, 8);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FallenStar, 5);
-            recipe.AddIngredient(ItemID.PlatinumBar, 8);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-
         public override bool AltFunctionUse(Player player)
         {
             if (isActive)
@@ -226,6 +208,17 @@ namespace RadiantArsenal.Items.Spellblades
                     Main.dust[dust].noGravity = true;
                 }
                 Main.PlaySound(SoundID.MaxMana, player.Center);
+            }
+        }
+    }
+
+    public class StarseekerSpellbladeGlobalNPC : GlobalNPC
+    {
+        public override void NPCLoot(NPC npc)
+        {
+            if (npc.type == NPCID.Harpy && Main.rand.NextFloat() < 0.05)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("StarseekerSpellblade"));
             }
         }
     }
