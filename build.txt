@@ -1,4 +1,4 @@
 author = KoolaidLemonade
-version = 0.3.2
+version = 0.4	
 displayName = Radiant Arsenal
 homepage = https://discord.gg/bQukKKhJHN
