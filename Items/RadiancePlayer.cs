@@ -47,8 +47,6 @@ namespace RadiantArsenal.Items
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            Color color = new Color(255, 200, 100);
-
             if (!radianceCapped && target.type != NPCID.TargetDummy)
             {
                 radianceCurrent += 1;
@@ -58,8 +56,6 @@ namespace RadiantArsenal.Items
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            Color color = new Color(255, 200, 100);
-
             if (!radianceCapped && target.type != NPCID.TargetDummy)
             {
                 radianceCurrent += 1;

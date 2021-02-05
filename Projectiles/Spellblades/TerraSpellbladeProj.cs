@@ -170,7 +170,7 @@ namespace RadiantArsenal.Projectiles.Spellblades
             {
                 Vector2 randCircle = projectile.Center + Vector2.One.RotatedByRandom(Math.PI * 4) * 5;
                 int dust = Dust.NewDust(randCircle, 0, 0, 107);
-                Main.dust[dust].velocity = ((Main.dust[dust].position - projectile.Center) / 7);
+                Main.dust[dust].velocity = (Main.dust[dust].position - projectile.Center) / 7;
                 Main.dust[dust].noGravity = true;
             }
         }
