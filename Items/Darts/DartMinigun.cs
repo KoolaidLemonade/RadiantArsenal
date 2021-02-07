@@ -34,18 +34,9 @@ namespace RadiantArsenal.Items.Darts
             item.shoot = ProjectileID.Seed;
             item.useAmmo = AmmoID.Dart;
             item.UseSound = SoundID.Item11;
+
             radianceCost = 80;
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.GoldBar, 12);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-
         public override bool AltFunctionUse(Player player)
         {
             return true;
