@@ -35,6 +35,7 @@ namespace RadiantArsenal.Projectiles.Darts
 
             if (projectile.ai[0] >= 120)
             {
+                projectile.tileCollide = false;
                 projectile.extraUpdates = 100;
                 projectile.velocity = -(projectile.Center - player.Center) / 20;
             }
