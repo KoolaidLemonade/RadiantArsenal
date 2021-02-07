@@ -10,7 +10,7 @@ namespace RadiantArsenal.Items.Accessories
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Increases radiance cap by 20"
+			Tooltip.SetDefault("Increases radiance regeneration by 1"
 				+ "\nChance on hit to cause enemies to erupt into spirit energy");
 		}
 
