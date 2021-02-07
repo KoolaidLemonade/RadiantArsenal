@@ -49,8 +49,7 @@ namespace RadiantArsenal.Items
         {
             if (target.type != NPCID.TargetDummy)
             {
-                radianceCurrent += 1;
-                radianceCurrent2 += 1;
+                AddRadiance(1);
             }
         }
 
@@ -58,8 +57,7 @@ namespace RadiantArsenal.Items
         {
             if (target.type != NPCID.TargetDummy)
             {
-                radianceCurrent += 1;
-                radianceCurrent2 += 1;
+                AddRadiance(1);
             }
         }
 
@@ -69,8 +67,7 @@ namespace RadiantArsenal.Items
             if (regenTimer % 60 == 0)
             {
                 regenTimer = 0;
-                radianceCurrent += radianceRegen;
-                radianceCurrent2 += radianceRegen;
+                AddRadiance(radianceRegen);
             }
 
             if (radianceCurrent != radianceCurrent2)
@@ -91,6 +88,15 @@ namespace RadiantArsenal.Items
             if (radianceCurrent - ConsumptionAmount >= 0)
             {
                 radianceCurrent -= ConsumptionAmount;
+            }
+        }
+
+        public void AddRadiance(int AddAmount)
+        {
+            if (radianceCurrent < radianceMax2)
+            {
+                radianceCurrent += AddAmount;
+                radianceCurrent2 += AddAmount;
             }
         }
 

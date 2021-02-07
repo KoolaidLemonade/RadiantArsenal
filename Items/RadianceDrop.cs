@@ -25,8 +25,7 @@ namespace RadiantArsenal.Items
 
         public override bool OnPickup(Player player)
         {
-            player.GetModPlayer<RadiancePlayer>().radianceCurrent += 10;
-            player.GetModPlayer<RadiancePlayer>().radianceCurrent2 += 10;
+            player.GetModPlayer<RadiancePlayer>().AddRadiance(10);
 
             Color color = new Color(255, 246, 141);
             CombatText.NewText(player.getRect(), color, 10);
