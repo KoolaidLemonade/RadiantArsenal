@@ -4,6 +4,10 @@ This mod is currently under development. Expect to see more content in the futur
 
 Mod author is KoolaidLemonade. Koolaidlemonade#6442 on discord.
 
+v0.4.1
+- Added 3 new accessories
+- Enemies now have a chance to give a radiance drop, similar to hearts or mana stars that restores 10 radiance
+
 v0.4
 - Dart subclass expanded to encompass most of the game progression
 - Several bugfixes and small changes

@@ -22,6 +22,11 @@
     <None Remove="Projectiles\NewFolder1\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items\Accessories\Shimmershield.cs" />
+    <Compile Include="Items\Accessories\SpiritLantern.cs" />
+    <Compile Include="Items\Accessories\StarBand.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
