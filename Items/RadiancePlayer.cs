@@ -18,10 +18,9 @@ namespace RadiantArsenal.Items
         public int radianceMax;
         public int radianceMax2;
         public int radianceRegen;
-        public bool radianceCapped;
 
-        int regenTimer;
-        int radianceCurrent2;
+        internal int regenTimer;
+        internal int radianceCurrent2;
         public override void PostUpdateMiscEffects()
         {
             UpdateRadiance();
@@ -48,7 +47,7 @@ namespace RadiantArsenal.Items
         }
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            if (!radianceCapped && target.type != NPCID.TargetDummy)
+            if (target.type != NPCID.TargetDummy)
             {
                 radianceCurrent += 1;
                 radianceCurrent2 += 1;
@@ -57,7 +56,7 @@ namespace RadiantArsenal.Items
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if (!radianceCapped && target.type != NPCID.TargetDummy)
+            if (target.type != NPCID.TargetDummy)
             {
                 radianceCurrent += 1;
                 radianceCurrent2 += 1;
@@ -69,6 +68,7 @@ namespace RadiantArsenal.Items
             regenTimer++;
             if (regenTimer % 60 == 0)
             {
+                regenTimer = 0;
                 radianceCurrent += radianceRegen;
                 radianceCurrent2 += radianceRegen;
             }
@@ -82,16 +82,8 @@ namespace RadiantArsenal.Items
                 radianceCurrent2 = radianceCurrent;
             }
 
-            if (radianceCurrent >= radianceMax2)
-            {
-                radianceCapped = true;
-            }
-            else
-            {
-                radianceCapped = false;
-            }
-
             radianceCurrent = Utils.Clamp(radianceCurrent, 0, radianceMax2);
+            radianceCurrent2 = Utils.Clamp(radianceCurrent2, 0, radianceMax2);
         }
 
         public void ConsumeRadiance(int ConsumptionAmount)
