@@ -102,6 +102,8 @@ namespace RadiantArsenal.Items.Darts
 
                 player.velocity.X /= 1.06f;
             }
+
+            base.HoldItem(player);
         }
 
         public override bool ConsumeAmmo(Player player)
