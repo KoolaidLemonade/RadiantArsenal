@@ -14,6 +14,7 @@ namespace RadiantArsenal.Projectiles.Darts
             projectile.CloneDefaults(ProjectileID.LostSoulFriendly);
             aiType = ProjectileID.LostSoulFriendly;
 
+            projectile.penetrate = 1;
             projectile.tileCollide = false;
         }
     }
