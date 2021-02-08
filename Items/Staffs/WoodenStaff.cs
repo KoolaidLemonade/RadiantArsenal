@@ -1,4 +1,4 @@
-﻿/*using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -14,19 +14,19 @@ namespace RadiantArsenal.Items.Staffs
         }
         public override void SafeSetDefaults()
         {
-            item.damage = 30;
-            item.crit = 1;
+            item.damage = 3;
+            item.crit = 4;
             item.noUseGraphic = true;
             item.shootSpeed = 15f;
             item.noMelee = true;
             item.melee = true;
             item.width = 20;
-            item.height = 20;
-            item.useTime = 20;
+            item.height = 30;
+            item.useTime = 30;
             item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.channel = true;
-            item.knockBack = 10f;
+            item.knockBack = 4f;
             item.value = 10000;
             item.rare = ItemRarityID.Green;
             item.autoReuse = true;
@@ -85,5 +85,17 @@ namespace RadiantArsenal.Items.Staffs
             }
             return base.CanUseItem(player);
         }
+
+        public override void HoldItem(Player player)
+        {
+            if (player.altFunctionUse == 2 && player.itemAnimation == player.itemAnimationMax - 1)
+            {
+                player.immune = true;
+                player.immuneTime = 30;
+                player.velocity += player.DirectionTo(Main.MouseWorld) * 8;
+            }
+
+            base.HoldItem(player);
+        }
     }
-}*/
+}

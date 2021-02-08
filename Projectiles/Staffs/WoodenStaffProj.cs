@@ -1,4 +1,4 @@
-﻿/*using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
@@ -56,7 +56,7 @@ namespace RadiantArsenal.Projectiles.Staffs
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.immune[projectile.owner] = 6;
+            target.immune[projectile.owner] = 12;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -122,15 +122,14 @@ namespace RadiantArsenal.Projectiles.Staffs
 
             projectile.Center = newCenter;
 
-            for (int i = 0; i < 200; i++)
+            for (int j = 0; j < Main.maxProjectiles; j++)
             {
-                NPC npc = Main.npc[i];
+                Projectile counterTarget = Main.projectile[j];
 
-                if (npc.getRect().Intersects(projectile.getRect()))
+                if (counterTarget.getRect().Intersects(projectile.getRect()) && counterTarget.hostile)
                 {
-                    player.immune = true;
-                    player.immuneTime = 30;
-                    player.velocity += player.DirectionTo(npc.Center);
+                    counterTarget.hostile = false;
+                    counterTarget.velocity = -(counterTarget.velocity).RotatedByRandom(MathHelper.ToRadians(90));
                 }
             }
 
@@ -178,4 +177,4 @@ namespace RadiantArsenal.Projectiles.Staffs
             drawOriginOffsetY = -4;
         }
     }
-}*/
+}
