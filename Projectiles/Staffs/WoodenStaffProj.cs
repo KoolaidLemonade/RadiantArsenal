@@ -56,7 +56,7 @@ namespace RadiantArsenal.Projectiles.Staffs
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.immune[projectile.owner] = 12;
+            target.immune[projectile.owner] = 18;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

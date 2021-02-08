@@ -14,7 +14,7 @@ namespace RadiantArsenal.Items.Staffs
         }
         public override void SafeSetDefaults()
         {
-            item.damage = 3;
+            item.damage = 5;
             item.crit = 4;
             item.noUseGraphic = true;
             item.shootSpeed = 15f;
@@ -22,13 +22,13 @@ namespace RadiantArsenal.Items.Staffs
             item.melee = true;
             item.width = 20;
             item.height = 30;
-            item.useTime = 30;
-            item.useAnimation = 20;
+            item.useTime = 6;
+            item.useAnimation = 6;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.channel = true;
             item.knockBack = 4f;
             item.value = 10000;
-            item.rare = ItemRarityID.Green;
+            item.rare = ItemRarityID.Blue;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("WoodenStaffProj");
 
