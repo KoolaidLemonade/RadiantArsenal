@@ -8,6 +8,11 @@ namespace RadiantArsenal.Items.VanillaChanges.Swords
 {
     public class TrueNightsEdge : VanillaItemChange
     {
+        public override void SetDefaults(Item item)
+        {
+            item.GetGlobalItem<RadianceGlobalItem>().radianceCost = 100;
+        }
+
         public override bool AltFunctionUse(Item item, Player player)
         {
             return true;
@@ -32,7 +37,7 @@ namespace RadiantArsenal.Items.VanillaChanges.Swords
         {
             if (player.altFunctionUse == 2)
             {
-                if (Main.myPlayer == player.whoAmI && Main.mouseRightRelease && Main.dayTime)
+                if (Main.myPlayer == player.whoAmI && Main.mouseRightRelease && Main.dayTime && player.GetModPlayer<RadiancePlayer>().radianceCurrent >= item.GetGlobalItem<RadianceGlobalItem>().radianceCost)
                 {
                     Main.dayTime = false;
                     player.GetModPlayer<RadiancePlayer>().ConsumeRadiance(item.GetGlobalItem<RadianceGlobalItem>().radianceCost);
