@@ -8,11 +8,6 @@ namespace RadiantArsenal.Items.VanillaChanges.Swords
 {
     public class TerraBlade : VanillaItemChange
     {
-        public override void SetDefaults(Item item)
-        {
-            item.GetGlobalItem<RadianceGlobalItem>().radianceCost = 100;
-        }
-
         public override bool AltFunctionUse(Item item, Player player)
         {
             return true;
