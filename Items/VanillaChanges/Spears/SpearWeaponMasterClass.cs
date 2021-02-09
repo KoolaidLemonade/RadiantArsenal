@@ -15,12 +15,17 @@ namespace RadiantArsenal.Items.VanillaChanges.Spears
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (player.GetModPlayer<RadiancePlayer>().radianceCurrent >= item.GetGlobalItem<RadianceGlobalItem>().radianceCost)
+            if (player.altFunctionUse == 2)
             {
-                return true;
+                if (player.GetModPlayer<RadiancePlayer>().radianceCurrent >= item.GetGlobalItem<RadianceGlobalItem>().radianceCost)
+                {
+                    return true;
+                }
+
+                return false;
             }
 
-            return false;
+            return true;
         }
 
 

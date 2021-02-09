@@ -15,12 +15,17 @@ namespace RadiantArsenal.Items.VanillaChanges.Bows
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (player.GetModPlayer<RadiancePlayer>().radianceCurrent >= item.GetGlobalItem<RadianceGlobalItem>().radianceCost)
+            if (player.altFunctionUse == 2)
             {
-                return true;
+                if (player.GetModPlayer<RadiancePlayer>().radianceCurrent >= item.GetGlobalItem<RadianceGlobalItem>().radianceCost)
+                {
+                    return true;
+                }
+
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         public override bool AltFunctionUse(Item item, Player player)
